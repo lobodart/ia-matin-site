@@ -2,6 +2,6 @@
 
 Public pages of the IA Matin app, served by GitHub Pages: privacy policy, legal notice, support, and the IAMatinBot page.
 
-https://lobodart.github.io/ia-matin-site/
+https://iamatin.lobodart.dev/
 
 Plain static HTML, no build step, no third-party requests (no fonts, analytics or scripts).
