@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IAMatinBot · IA Matin</title>
+  <meta name="description" content="IAMatinBot, le robot qui lit les flux RSS pour l’application IA Matin, et comment le bloquer.">
+  <link rel="icon" href="../favicon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <a href="../"><img src="../logo.png" alt=""></a>
+      <div>
+        <a href="../" class="brand">IA Matin</a>
+        <div class="tagline">L’actu de l’IA, chaque matin</div>
+      </div>
+    </header>
+    <nav aria-label="Pages">
+      <a href="../">Accueil</a>
+      <a href="../confidentialite/">Confidentialité</a>
+      <a href="../mentions-legales/">Mentions légales</a>
+      <a href="../support/">Aide et contact</a>
+      <a href="../bot/" aria-current="page">IAMatinBot</a>
+    </nav>
+    <main>
+
+      <h1>IAMatinBot</h1>
+      <p class="lede">IAMatinBot lit les flux RSS d’une sélection de médias et de blogs consacrés à l’intelligence artificielle, pour préparer l’édition quotidienne de l’application IA Matin.</p>
+
+      <h2>Identification</h2>
+      <pre><code>IAMatinBot/0.1 (+https://lobodart.github.io/ia-matin-site/bot/)</code></pre>
+
+      <h2>Ce qu’il fait</h2>
+      <ul>
+        <li>Il lit les flux RSS des sources suivies, toutes les deux heures environ.</li>
+        <li>Pour les sites qui l’autorisent, il télécharge une fois la page de chaque nouvel article, afin d’en extraire le texte. Ce texte sert uniquement à rédiger une synthèse originale ; il n’est jamais republié et n’est pas accessible aux lecteurs.</li>
+        <li>Chaque synthèse cite ses sources et renvoie vers les articles originaux.</li>
+      </ul>
+
+      <h2>Opposition à la fouille de textes</h2>
+      <p>Le texte complet des articles n’est pas utilisé si votre site :</p>
+      <ul>
+        <li>bloque IAMatinBot, ou tous les robots, dans son <code>robots.txt</code> ;</li>
+        <li>bloque les principaux robots d’IA dans son <code>robots.txt</code> (GPTBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended, PerplexityBot, meta-externalagent) ;</li>
+        <li>déclare une réserve de fouille de textes et de données (article 4 de la directive (UE) 2019/790) via <code>/.well-known/tdmrep.json</code>, l’en-tête HTTP <code>tdm-reservation: 1</code> ou la balise <code>&lt;meta name="tdm-reservation" content="1"&gt;</code>.</li>
+      </ul>
+      <p>Dans ce cas, seuls le titre et un court extrait (500 caractères au plus) issus de votre flux RSS sont utilisés, avec un lien vers l’article. Ces signaux sont vérifiés à l’ajout de chaque source, puis à nouveau régulièrement.</p>
+
+      <h2>Bloquer IAMatinBot</h2>
+      <p>Ajoutez ces lignes à votre <code>robots.txt</code> :</p>
+      <pre><code>User-agent: IAMatinBot
+Disallow: /</code></pre>
+      <p>Pour que votre site ne soit plus du tout suivi, y compris son flux RSS, écrivez à <a href="mailto:contact@louisbodart.fr?subject=IAMatinBot">contact@louisbodart.fr</a> : la source est retirée sous 48 heures.</p>
+    </main>
+    <footer>
+      IA Matin · <a href="mailto:contact@louisbodart.fr">contact@louisbodart.fr</a> · <a href="../mentions-legales/">Mentions légales</a>
+    </footer>
+  </div>
+</body>
+</html>
